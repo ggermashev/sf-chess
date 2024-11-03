@@ -104,6 +104,7 @@ public class Board {
         Piece piece = field[from.row][from.col];
         Piece target = field[to.row][to.col];
 
+        // Рокировка
         if (piece instanceof King && target instanceof Rook && piece.color == target.color) {
             if (!piece.firstMove || !target.firstMove) { return false; }
 
