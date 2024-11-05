@@ -2,21 +2,21 @@ import Piece.Position;
 import Exception.GameOverException;
 
 public class Game {
-    private Board board;
+    private ChessBoard board;
 
     public Game() {
-        board = new Board();
+        board = new ChessBoard();
     }
 
     public void move(int fromRow, int fromCol, int toRow, int toCol) throws GameOverException {
         Position from = new Position(fromRow, fromCol);
         Position to = new Position(toRow, toCol);
 
-        board.move(from, to);
+        board.moveToPosition(from, to);
     }
 
     public void printBoard() {
-        board.print();
+        board.printBoard();
     }
 
     public String getPieceId(int row, int col) {
@@ -25,6 +25,6 @@ public class Game {
     }
 
     public String getPlayerColor() {
-        return board.player.color;
+        return board.nowPlayer.color;
     }
 }

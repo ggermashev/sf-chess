@@ -10,7 +10,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("Ходят ".concat(game.getPlayerColor()));
+            System.out.println("Ходят ".concat(game.getPlayerColor()).concat(". Формат хода: A2 A4"));
             game.printBoard();
             String move = scanner.nextLine();
             String[] parsedMove = move.split(" ");

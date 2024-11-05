@@ -5,14 +5,14 @@ import Player.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pawn extends Piece {
+public class Pawn extends ChessPiece {
 
-    public Pawn(Player player, Position position) {
-        super(player, position);
+    public Pawn(Player player) {
+        super(player);
         id = player.pawnId;;
     }
 
-    public boolean mayGo(Piece[][] board, Position position, Position toGo) {
+    public boolean canMoveToPosition(ChessPiece[][] board, Position position, Position toGo) {
 
         List<Position> mays = new ArrayList<Position>();
         int row = position.row;

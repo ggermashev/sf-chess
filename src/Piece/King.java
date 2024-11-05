@@ -1,17 +1,18 @@
 package Piece;
 
 import Player.Player;
+import Exception.EmptyFieldException;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class King extends Piece{
-    public King(Player player, Position position) {
-        super(player, position);
+public class King extends ChessPiece {
+    public King(Player player) {
+        super(player);
         id = player.kingId;;
     }
 
-    public boolean mayGo(Piece[][] board, Position position, Position toGo) {
+    public boolean canMoveToPosition(ChessPiece[][] board, Position position, Position toGo) throws EmptyFieldException {
         List<Position> mays = new ArrayList<Position>();
         int row = position.row;
         int col = position.col;
@@ -25,7 +26,23 @@ public class King extends Piece{
         }
 
         for (Position may: mays) {
-            if (may.isEqual(toGo)) { return true; }
+            if (may.isEqual(toGo)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean isUnderAttack(ChessPiece[][] board, Position toGo) throws EmptyFieldException {
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                Position position = new Position(row, col);
+                ChessPiece piece = board[row][col];
+                if (piece.color != null && piece.color != color && piece.canMoveToPosition(board, position, toGo)) {
+                    return true;
+                }
+            }
         }
 
         return false;

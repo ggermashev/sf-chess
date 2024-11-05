@@ -5,13 +5,13 @@ import Player.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Horse extends Piece{
-    public Horse(Player player, Position position) {
-        super(player, position);
+public class Horse extends ChessPiece {
+    public Horse(Player player ) {
+        super(player);
         id = player.horseId;;
     }
 
-    public boolean mayGo(Piece[][] board, Position position, Position toGo) {
+    public boolean canMoveToPosition(ChessPiece[][] board, Position position, Position toGo) {
         List<Position> mays = new ArrayList<Position>();
         int row = position.row;
         int col = position.col;

@@ -809,8 +809,6 @@ public class GameTest {
         beforeTest();
         try {
             game.move(0, 4, 1, 4);
-
-
         } catch (GameOverException e) {
             allGood = false;
             System.out.println("test king cant move failed");
