@@ -187,6 +187,14 @@ public class ChessBoard {
         board[from.row][from.col] = new Empty();
         board[to.row][to.col] = new Empty();
         int delta = toCol > from.col ? -1 : 2;
+
+        Position toGo = new Position(to.row, to.col + delta);
+        try {
+            if (((King) piece).isUnderAttack(board, toGo)) {
+                return false;
+            }
+        } catch (Exception e) { return false; }
+
         board[to.row][to.col + delta] = piece;
         board[to.row][to.col + 2*delta - delta/2] = target;
 
